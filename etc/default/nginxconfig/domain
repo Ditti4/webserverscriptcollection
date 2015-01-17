@@ -1,0 +1,6 @@
+server
+{
+    include         include/stuff;
+    server_name     DOMAIN *.DOMAIN;
+    root            /var/web/DOMAIN/_default;
+}

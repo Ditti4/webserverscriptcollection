@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#Simple script to add a apache2 vhost based on a default file laying around in /etc/default/$server/vhost
+
+server="apache2"
+domain=$1
+sub=$2
+
+[ ! -f /etc/apache2/sites-available/${domain}/${sub} ] && cat /etc/default/apache2config/vhost|sed "s/SUB/${sub}/"|sed "s/DOMAIN/${domain}/" > /etc/apache2/sites-available/${domain}/${sub}
+[ ! -f /etc/nginx/sites-available/${domain}/${sub} ] && cat /etc/default/nginxconfig/vhost|sed "s/SUB/${sub}/"|sed "s/DOMAIN/${domain}/" > /etc/nginx/sites-available/${domain}/${sub}
+
+[ ! -d /var/web/${domain}/${sub} ] && mkdir /var/web/${domain}/${sub} && chown -R www-data:web /var/web/${domain}/${sub} && chmod -R 775 /var/web/${domain}/${sub}
+
+#Add FTP user to the MySQL table, dumbass.

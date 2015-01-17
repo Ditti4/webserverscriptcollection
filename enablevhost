@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#Simple script to enable a vhost.
+
+server="apache2"
+domain=$1
+sub=$2
+
+ln -s /etc/apache2/sites-available/${domain}/${sub} /etc/apache2/sites-enabled/${domain}/${sub}
+ln -s /etc/nginx/sites-available/${domain}/${sub} /etc/nginx/sites-enabled/${domain}/${sub}
+
+service ${server} reload

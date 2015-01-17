@@ -1,0 +1,9 @@
+<VirtualHost ipv4_address:80>
+    ServerName SUB.DOMAIN
+    DocumentRoot "/var/web/DOMAIN/SUB"
+</VirtualHost>
+        
+<VirtualHost [ipv6_address]:80>
+    ServerName SUB.DOMAIN
+    DocumentRoot "/var/web/DOMAIN/SUB"
+</VirtualHost>

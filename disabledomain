@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#Simple script to disable an entire domain (including all vhosts).
+
+server="apache2"
+domain=$1
+
+for link in `ls /etc/apache2/sites-enabled/${domain}`; do
+	unlink /etc/apache2/sites-enabled/${domain}/${link}
+done
+for link in `ls /etc/nginx/sites-enabled/${domain}`; do
+	unlink /etc/nginx/sites-enabled/${domain}/${link}
+done
+
+rm /etc/apache2/sites-enabled/${domain}
+rm /etc/nginx/sites-enabled/${domain}
+
+service ${server} reload

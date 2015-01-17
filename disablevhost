@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#Simple script to disable a vhost.
+
+server="apache2"
+domain=$1
+sub=$2
+
+unlink /etc/apache2/sites-enabled/${domain}/${sub}
+unlink /etc/nginx/sites-enabled/${domain}/${sub}
+
+service ${server} reload

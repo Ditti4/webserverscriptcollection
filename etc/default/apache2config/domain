@@ -1,0 +1,11 @@
+<VirtualHost ipv4_address:80>
+    ServerName *.DOMAIN
+#   ServerAlias *.DOMAIN
+    DocumentRoot "/var/web/DOMAIN/_default"
+</VirtualHost>
+        
+<VirtualHost [ipv6_address]:80>
+    ServerName *.DOMAIN
+#   ServerAlias *.DOMAIN
+    DocumentRoot "/var/web/DOMAIN/_default"
+</VirtualHost>

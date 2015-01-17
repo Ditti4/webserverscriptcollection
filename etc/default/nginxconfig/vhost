@@ -1,0 +1,6 @@
+server
+{
+    include         include/stuff;
+    server_name     SUB.DOMAIN;
+    root            /var/web/DOMAIN/SUB;
+}

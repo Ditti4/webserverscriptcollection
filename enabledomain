@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#Simple script to enable an entire domain (including all vhosts).
+
+server="apache2"
+domain=$1
+
+mkdir /etc/apache2/sites-enabled/${domain}
+mkdir /etc/nginx/sites-enabled/${domain}
+
+for link in `ls /etc/apache2/sites-available/${domain}`; do
+	ln -s /etc/apache2/sites-available/${domain}/${link} /etc/apache2/sites-enabled/${domain}/${link}
+done
+for link in `ls /etc/nginx/sites-available/${domain}`; do
+	ln -s /etc/nginx/sites-available/${domain}/${link} /etc/nginx/sites-enabled/${domain}/${link}
+done
+
+service ${server} reload
